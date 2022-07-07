@@ -1,6 +1,34 @@
+const {ObjectId} = require('mongoose').Types;
 const Post = require('models/post');
+const Joi = require('joi');
+
+exports.checkObjectId = (ctx,next) => {
+    const {id} = ctx.params;
+
+    //검증 실패
+    if(!ObjectId.isValid(id)){
+        ctx.status = 400; //400 Bad Requeste
+        return null;
+    }
+    return next();
+};
 
 exports.write=async(ctx) => {
+
+    const schema = Joi.object().keys({
+        title: Joi.string().required(),
+        body: Joi.string().required(),
+        tags: Joi.array().items(Joi.string()).required()
+    });
+
+    const validation = schema.validate(ctx.request.body);
+    
+    if(validation.error){
+        ctx.status = 400;
+        ctx.body = validation.error;
+        return;
+    }
+
     const {title,body,tags} = ctx.request.body;
     const post = new Post({
         title,body,tags
