@@ -43,9 +43,29 @@ exports.write=async(ctx) => {
 };
 
 exports.list= async(ctx) => {
+    const page = parseInt(ctx.query.page || 1,10);
+
+    // 잘못된 페이지 주어졌다면 오류
+    if(page<1){
+        ctx.status = 400;
+        return;
+    }
+
     try{
-        const posts = await Post.find().exec();
-        ctx.body = posts;
+        const posts = await Post.find()
+            .sort({_id: -1})
+            .limit(10)
+            .skip((page -1)*10)
+            .lean()
+            .exec();
+        const postCount = await Post.count().exec();
+        const limitBodyLength = post => ({
+            ...post,
+            body: post.body.length < 200 ? post.body : `${post.body.slice(0,200)}...`
+        });
+        ctx.body = posts.map(limitBodyLength);    
+        //마지막 페이지 알려 주기
+        ctx.set('Last-Page', Math.ceil(postCount / 10));
     } catch(e){
         ctx.throw(e, 500)
     }
