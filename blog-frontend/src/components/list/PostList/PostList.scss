@@ -1,72 +1,52 @@
 @import 'utils';
 
-.button{   
-   padding-left: 0.5rem;
-   padding-right: 0.5rem;
-   padding-top: 0.25rem;
-   padding-bottom: 0.25rem;
-   font-weight: 600;
-   font-size: 0.9rem;
-   color:white;
-   cursor:pointer;
-   user-select: none;
-   display: inline-flex;
-   
-    &.default {
-        background: $oc-blue-6 ;
-        &:hover{
-        background: $oc-blue-5;
+.post-list{
+    .post-item{
+        padding: 1.5rem;
+        transition: all .15s ease-in;
+        h2{
+            font-size: 2rem;
+            font-weight: 400;
+            margin: 0;
+            color: $oc-gray-8;
+            a{
+                transition: all .15s ease-in;
+                border-bottom: 1px solid transparent;
+            }
+            a:hover {
+                color: $oc-blue-6;
+                border-bottom: 1px solid $oc-blue-6;
+            }
+        }
+        .date {
+            font-size: 0.85rem;
+            color: $oc-gray-5;
+        }
+        p{
+            font-weight: 300;
+            color: $oc-gray-7;
         }
 
-        &:active{
-        background: $oc-blue-6;
-        }
-    }
-
-    &.gray {
-        background: $oc-gray-7 ;
-        &:hover{
-        background: $oc-gray-6;
-        }
-
-        &:active{
-        background: $oc-gray-7;
-        }
-    }
-
-    &.outline {
-        border: 2px solid white;
-        border-radius: 2px;
-
-        &:hover{
-            background: white;
+        .tags {
+            font-size: 0.85rem;
             color: $oc-blue-6;
+            a{
+                &:hover {
+                    color: $oc-blue-5;
+                    text-decoration: underline;
+                }
+            }
+            a+a {
+                margin-left: 0.25rem;
+            }           
         }
 
-        &:active{
-            background: rgba(255,255,255,0.85);
-            border: 2px solid rgba(255,255,255,0.85);
-        }
-    }
-
-    /*&:hover{
-        @include material-shadow(2,0.5);
-    }
-        utils 오류 ? 
-    */
-
-    &.disabled{
-        background: $oc-gray-4;
-        color: $oc-gray-6;
-        cursor: default;
-
-        &:hover, &:active{
-            box-shadow: none;
-            background: $oc-gray-4;
+        &:hover{
+            background: rgba($oc-blue-6, 0.05);
         }
     }
 
-    & + & {
-        margin-left: 0.5rem;
+    .post-item + .post-item {
+        border-top: 1px solid $oc-gray-3;
     }
 }
