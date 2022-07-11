@@ -1,26 +1,22 @@
 import React from "react";
-import styles from './Button.scss';
+import styles from './Pagination.scss';
 import classNames from 'classnames/bind';
-import {Link} from 'react-router-dom';
+import Button from "../../common/Button";
 
 const cx = classNames.bind(styles);
 
-const Div = ({children, ...rest}) => <div {...rest}>{children}</div>
+const Pagination = () => (
+    <div className={cx('pagination')}>
+        <Button disabled>
+            이전 페이지
+        </Button>
+        <div className={cx('number')}>
+            페이지1
+        </div>
+        <Button>
+            다음 페이지
+        </Button>
+    </div>
+);
 
-
-const Button = ({
-    children, to, onClick, disabled, theme = 'default',
-}) => {
-    const Element = (to && !disabled) ? Link : Div;
-
-    return (
-        <Element
-        to={to}
-        className={cx('button', theme, {disabled})}
-        onClick={disabled ? () => null: onClick}>
-        {children}
-        </Element>
-    )
-}
-
-export default Button;
+export default Pagination;
