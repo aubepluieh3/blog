@@ -1,5 +1,6 @@
 import React from 'react';
 import {Routes, Route} from 'react-router-dom';
+import Base from '../containers/post/common/Base';
 import {ListPage, PostPage, EditorPage, NotFoundPage} from '../pages';
 
 const App = () => {
@@ -13,6 +14,7 @@ const App = () => {
                 <Route path="/editor" element={<EditorPage/>}/>
                 <Route path ="/*" element={<NotFoundPage/>}/>
             </Routes>
+            <Base/>
         </div>
     );
 };

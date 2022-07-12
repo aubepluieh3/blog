@@ -10,6 +10,7 @@
     "koa": "^2.13.4",
     "koa-bodyparser": "^4.3.0",
     "koa-router": "^11.0.1",
+    "koa-session": "^6.2.0",
     "mongoose": "^6.4.3"
   },
   "devDependencies": {
@@ -19,5 +20,6 @@
   "scripts": {
     "start": "cross-env NODE_PATH=src node src",
     "start:dev": "cross-env NODE_PATH=src nodemon --watch src/ src/index.js"
-  }
+  },
+  "proxy": "http://localhost:4000"
 }
