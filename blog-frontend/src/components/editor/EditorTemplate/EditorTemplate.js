@@ -36,7 +36,7 @@ class EditorTemplate extends Component{
         const leftStyle = {
             flex: leftPercentage
         };
-        const RightStyle = {
+        const rightStyle = {
             flex: 1-leftPercentage
         };
         const separatorStyle = {
@@ -47,10 +47,10 @@ class EditorTemplate extends Component{
             <div className={cx('editor-template')}>
                 {header}
                 <div className={cx('panes')}>
-                    <div className={cx('pane','editor')}>
+                    <div className={cx('pane','editor')} style={leftStyle}>
                         {editor}
                     </div>
-                    <div className={cx('pane','preview')}>
+                    <div className={cx('pane','preview')} style={rightStyle}>
                         {preview}
                     </div>
                     <div

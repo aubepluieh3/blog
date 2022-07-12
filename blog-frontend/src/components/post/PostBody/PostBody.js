@@ -5,7 +5,7 @@ import classNames from 'classnames/bind';
 
 const cx = classNames.bind(styles);
 
-const PostBody = () => (
+const PostBody = ({body}) => (
     <div className={cx('post-body')}>
         <div className={cx('post-body')}>
             <div className={cx('paper')}>
