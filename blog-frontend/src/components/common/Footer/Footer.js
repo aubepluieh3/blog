@@ -13,5 +13,6 @@ const Footer = ({onLoginClick, logged}) => (
         </div>
     </footer>    
 );
+//클릭해도 모달이 안 나옴 
 
 export default Footer;
